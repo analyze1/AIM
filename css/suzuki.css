@@ -1,0 +1,302 @@
+@charset "utf-8";
+body{
+	margin-left:auto;
+	margin-right:auto;
+	cursor:default;
+}
+#head-main {
+	width:100%;
+	height:90px;
+}
+#menu-main{
+	z-index:100;
+}
+#head-r {
+	font-size:14px;
+	width:40%;
+	float:right;
+	height:80px;
+	display:inline-block;
+	color:#0000FF;
+}
+#head-logo {
+	width:60%;
+	float:left;
+	height:90px;
+	display:inline-block;
+}
+#head-main-top {
+	width:100%;
+	height:150px;
+}
+#head-top {
+	width:50%;
+	float:left;
+	height:150px;
+	display:inline-block;
+}
+#head-top-r {
+	width:50%;
+	float:right;
+	height:150px;
+	display:inline-block;
+}
+#show-data{
+	width:100%;
+	height:auto;
+}
+#pageContent{
+	font-size:13px;
+}
+#bg-off{
+position:absolute;
+background-color:#ccc;
+opacity:0.65;
+-moz-opacity: 0.65;
+filter: alpha(opacity=65);
+overflow: visible;
+z-index: 9001;
+display:none;
+width:100%;
+top:0px;
+left:0px;
+}
+#loading{
+margin-left:auto;
+margin-right:auto;
+position:fixed;
+background-color:#FFF;
+width:400px;
+height:200px;
+line-height:200px;
+z-index: 9004;
+border-color:#000066;
+border:double;
+}
+.hh1{
+	font-size:15px;
+	color:#fff;
+	background-color:#666;
+	font-weight:600;
+}
+fieldset{
+	margin-top:20px;
+	margin-left:50px;
+	margin-right:50px;
+	border:hidden;
+}
+.bg-in{
+	background-color:#DBDBDB;
+}
+
+.warn{
+	color:#FF0000;
+	font-weight:600;
+}
+.warn1{
+	color:#FF0000;
+	font-weight:600;
+	width:100px;
+}
+.comment{
+	font-weight:600;
+	color:#009;
+}
+.NumPrice{
+	color:#009;
+	font-weight:bold;
+	text-align:right;
+}
+.TotalPrice{
+	color:#FF0000;
+	font-weight:bold;
+	text-align:right;
+}
+.TotalPrice2{
+	color:green;
+	font-weight:bold;
+	text-align:right;
+}
+.TotalPrice3{
+	color:#009;
+	font-weight:bold;
+	text-align:right;
+}
+#pageContent table th{
+	color:#fff;
+	background-color:#003;
+}
+#pageContent table tr{
+	height:30px;
+}
+#previewContent{
+background-color:#fff;
+display:block;
+position:absolute;
+padding-top:10px;
+padding-bottom:10px;
+width:70%;
+height:auto;
+z-index:9002;
+border:1px solid #CCCCCC;
+}
+.edit{
+	overflow: hidden;
+	width:20px;
+	height:20px;
+	background-image:url(../img/edit-pencil.gif);
+	float:right;
+}
+.edit-att{
+	overflow: hidden;
+	width:20px;
+	height:20px;
+	background-image:url(../img/edit-pencil.gif);
+	display:block;
+	float: left;
+	margin-left:10px;
+}
+.print{
+	overflow: hidden;
+	margin-left:10px;
+	width:20px;
+	height:20px;
+	background-image:url(../img/Print.png);
+	display:block;
+	float: left;
+}
+.bin{
+	overflow: hidden;
+	width:20px;
+	height:20px;
+	background-image:url(../img/bin.png);
+	display:block;
+	float: left;
+	margin-left:10px;
+}
+.T{
+	overflow: hidden;
+	margin-left:10px;
+	width:20px;
+	height:20px;
+	background-image:url(../images/tt.png);
+	display:block;
+	float: left;
+}
+.F{
+	overflow: hidden;
+	margin-left:10px;
+	width:20px;
+	height:20px;
+	background-image:url(../images/ff.png);
+	display:block;
+	float: left;
+}
+.save{
+	overflow: hidden;
+	margin-left:10px;
+	width:20px;
+	height:20px;
+	background-image:url(../img/send.png);
+	display:block;
+	float: left;
+}
+.print1{
+	overflow: hidden;
+	margin-left:10px;
+	width:20px;
+	height:20px;
+	background-image:url(../img/Print.png);
+	display:block;
+	float: left;
+}
+.regis table td{
+width:40px;
+}
+#SearchLeft{
+	line-height:31px;
+	margin-top:4px;
+	margin-left:10px;
+	font-weight:600;
+}
+#pageLinks A:visited{
+	color:#000;
+	border:#000000;
+}
+#pageLinks{
+	margin:10px;
+	width:100%;
+}
+.item{
+	position:absolute;
+	float:left;
+	background-color:#03F;
+	color:#FFF;
+	padding:5px;
+}
+.showDetail{
+	cursor:pointer;
+}
+
+.green_msg{ padding:30px; border:#75FFBA solid 1px; background-color:#E6FFF2; text-align:center; font-size:12px; width:350px; color:#666666; }
+.printact:link{
+	color:#0033FF;
+	text-decoration:none;
+	}
+.printact:visited{
+	color:#0033FF;
+	text-decoration:none;
+	}
+.iddata:link{
+	color:#0033FF;
+	text-decoration:none;
+	}
+.iddata:visited{
+	color:#0033FF;
+	text-decoration:none;
+	}
+
+	.paginate {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: .7em;
+	}
+	a.paginate {
+	border: 1px solid #000080;
+	padding: 2px 6px 2px 6px;
+	text-decoration: none;
+	color: #000080;
+	}
+	h2 {
+		font-size: 12pt;
+		color: #003366;
+		}
+		
+		 h2 {
+		line-height: 1.2em;
+		letter-spacing:-1px;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		}
+	a.paginate:hover {
+	background-color: #000080;
+	color: #FFF;
+	text-decoration: underline;
+	}
+	a.current {
+	border: 1px solid #000080;
+	font: bold .7em Arial,Helvetica,sans-serif;
+	padding: 2px 6px 2px 6px;
+	cursor: default;
+	background:#000080;
+	color: #FFF;
+	text-decoration: none;
+	}
+	span.inactive {
+	border: 1px solid #999;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: .7em;
+	padding: 2px 6px 2px 6px;
+	color: #999;
+	cursor: default;
+	}

@@ -1,0 +1,1 @@
+{"result":true,"errorCode":null,"errorMsg":null,"policyNo":"64203-3377401","policyUrl":"https:\/\/ws.viriyah.co.th\/ViriyahWSPolicy\/report\/PolicyFormCMI\/64\/203\/09712\/04\/14\/ee470ef168d6effbd40adf78e16700b2.pdf","barcodeNo":"3710433774019"}

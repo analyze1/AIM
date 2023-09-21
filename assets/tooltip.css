@@ -1,0 +1,910 @@
+.checkbox-1 {
+    --background: #fff;
+    --border: #D1D6EE;
+    --border-hover: #BBC1E1;
+    --border-active: #1E2235;
+    --tick: #fff;
+    position: relative;
+}
+
+.checkbox-1 input,
+.checkbox-1 svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+}
+
+.checkbox-1 input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    outline: none;
+    background: var(--background);
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 12px;
+    -webkit-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+    box-shadow: inset 0 0 0 var(--s, 1px) var(--b, var(--border));
+}
+
+.checkbox-1 input:hover {
+    --s: 2px;
+    --b: var(--border-hover);
+}
+
+.checkbox-1 input:checked {
+    --b: var(--border-active);
+}
+
+.checkbox-1 svg {
+    pointer-events: none;
+    fill: none;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--stroke, var(--border-active));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 21px;
+    height: 21px;
+    -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+    transform: scale(var(--scale, 1)) translateZ(0);
+}
+
+.checkbox-1.path input:checked {
+    --s: 2px;
+    -webkit-transition-delay: .4s;
+    transition-delay: .4s;
+}
+
+.checkbox-1.path input:checked+svg {
+    --a: 16.1 86.12;
+    --o: 102.22;
+}
+
+.checkbox-1.path svg {
+    stroke-dasharray: var(--a, 86.12);
+    stroke-dashoffset: var(--o, 86.12);
+    -webkit-transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+    transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+}
+
+.checkbox-1.bounce {
+    --stroke: var(--tick);
+}
+
+.checkbox-1.bounce input:checked {
+    --s: 11px;
+}
+
+.checkbox-1.bounce input:checked+svg {
+    -webkit-animation: bounce .4s linear forwards .2s;
+    animation: bounce .4s linear forwards .2s;
+}
+
+.checkbox-1.bounce svg {
+    --scale: 0;
+}
+
+@-webkit-keyframes bounce {
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.card-pokz {
+    transition: 0.3s;
+    width: 100%;
+    border: 2px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.container-pokz {
+    padding: 2px 16px;
+}
+
+.form-control-pokz {
+    height: 40px !important;
+    width: 100%;
+    margin: 0;
+    padding: 0 3px !important;
+    vertical-align: middle;
+    background: #f8f8f8;
+    border: 2px solid #ddd !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #000;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 0px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.modal-bodys {
+    position: relative;
+    max-height: 700px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.title-ins {
+    margin: 10px 0;
+    font-family: inherit;
+    line-height: 20px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    font-weight: bold;
+    font-size: 17.5px;
+}
+
+[data-tooltip] {
+    position: relative;
+    z-index: 10;
+}
+
+
+/* Positioning and visibility settings of the tooltip */
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    /* right: -350%; */
+    bottom: calc(100% + 5px);
+    pointer-events: none;
+    transition: 0.2s;
+    will-change: transform;
+}
+
+
+/* The actual tooltip with a dynamic width */
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    padding: 10px;
+    min-width: 50px;
+    max-width: 335px !important;
+    width: max-content;
+    width: -moz-max-content;
+    border-radius: 6px;
+    font-size: 14px;
+    /*   font-size: 0.73rem; */
+    background-color: rgba(65, 65, 65, 0.9);
+    background-image: linear-gradient(30deg, rgba(59, 72, 80, 0.44), rgba(59, 68, 75, 0.44), rgba(60, 82, 88, 0.44));
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    text-align: left;
+    white-space: pre-wrap;
+    transform: translate(-50%, -5px) scale(0.5);
+}
+
+
+/* Tooltip arrow */
+
+[data-tooltip]:after {
+    content: '';
+    border-style: solid;
+    border-width: 5px 5px 0px 5px;
+    border-color: rgba(55, 64, 70, 0.9) transparent transparent transparent;
+    transition-duration: 0s;
+    /* If the mouse leaves the element,
+                                the transition effects for the
+                                tooltip arrow are "turned off" */
+    transform-origin: top;
+    /* Orientation setting for the
+                                slide-down effect */
+    transform: translateX(-50%) scaleY(0);
+}
+
+
+/* Tooltip becomes visible at hover */
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Scales from 0.5 to 1 -> grow effect */
+
+[data-tooltip]:hover:before {
+    transition-delay: 0.3s;
+    transform: translate(-50%, -5px) scale(1);
+}
+
+
+/* Slide down effect only on mouseenter (NOT on mouseleave) */
+
+[data-tooltip]:hover:after {
+    transition-delay: 0.5s;
+    /* Starting after the grow effect */
+    transition-duration: 0.2s;
+    transform: translateX(-50%) scaleY(1);
+}
+
+
+/*
+    That's it.
+  */
+
+
+/*
+    If you want some adjustability
+    here are some orientation settings you can use:
+  */
+
+
+/* LEFT */
+
+
+/* Tooltip + arrow */
+
+[data-tooltip-location="left"]:before,
+[data-tooltip-location="left"]:after {
+    left: auto;
+    right: calc(100% + 5px);
+    bottom: 50%;
+}
+
+
+/* Tooltip */
+
+[data-tooltip-location="left"]:before {
+    transform: translate(-5px, 50%) scale(0.5);
+}
+
+[data-tooltip-location="left"]:hover:before {
+    transform: translate(-5px, 50%) scale(1);
+}
+
+
+/* Arrow */
+
+[data-tooltip-location="left"]:after {
+    border-width: 5px 0px 5px 5px;
+    border-color: transparent transparent transparent rgba(55, 64, 70, 0.9);
+    transform-origin: left;
+    transform: translateY(50%) scaleX(0);
+}
+
+[data-tooltip-location="left"]:hover:after {
+    transform: translateY(50%) scaleX(1);
+}
+
+
+/* RIGHT */
+
+[data-tooltip-location="right"]:before,
+[data-tooltip-location="right"]:after {
+    left: calc(100% + 5px);
+    bottom: 50%;
+}
+
+[data-tooltip-location="right"]:before {
+    transform: translate(5px, 50%) scale(0.5);
+}
+
+[data-tooltip-location="right"]:hover:before {
+    transform: translate(5px, 50%) scale(1);
+}
+
+[data-tooltip-location="right"]:after {
+    border-width: 5px 5px 5px 0px;
+    border-color: transparent rgba(55, 64, 70, 0.9) transparent transparent;
+    transform-origin: right;
+    transform: translateY(50%) scaleX(0);
+}
+
+[data-tooltip-location="right"]:hover:after {
+    transform: translateY(50%) scaleX(1);
+}
+
+
+/* BOTTOM */
+
+[data-tooltip-location="bottom"]:before,
+[data-tooltip-location="bottom"]:after {
+    top: calc(100% + 5px);
+    bottom: auto;
+}
+
+[data-tooltip-location="bottom"]:before {
+    transform: translate(-50%, 5px) scale(0.5);
+}
+
+[data-tooltip-location="bottom"]:hover:before {
+    transform: translate(-50%, 5px) scale(1);
+}
+
+[data-tooltip-location="bottom"]:after {
+    border-width: 0px 5px 5px 5px;
+    border-color: transparent transparent rgba(55, 64, 70, 0.9) transparent;
+    transform-origin: bottom;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-body {
+    padding: 15px
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+.panel-heading>.dropdown .dropdown-toggle {
+    color: inherit
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit
+}
+
+.panel-title>.small,
+.panel-title>.small>a,
+.panel-title>a,
+.panel-title>small,
+.panel-title>small>a {
+    color: inherit
+}
+
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.panel>.list-group,
+.panel>.panel-collapse>.list-group {
+    margin-bottom: 0
+}
+
+.panel>.list-group .list-group-item,
+.panel>.panel-collapse>.list-group .list-group-item {
+    border-width: 1px 0;
+    border-radius: 0
+}
+
+.panel>.list-group:first-child .list-group-item:first-child,
+.panel>.panel-collapse>.list-group:first-child .list-group-item:first-child {
+    border-top: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+.panel>.list-group:last-child .list-group-item:last-child,
+.panel>.panel-collapse>.list-group:last-child .list-group-item:last-child {
+    border-bottom: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+.panel-heading+.list-group .list-group-item:first-child {
+    border-top-width: 0
+}
+
+.list-group+.panel-footer {
+    border-top-width: 0
+}
+
+.panel>.panel-collapse>.table,
+.panel>.table,
+.panel>.table-responsive>.table {
+    margin-bottom: 0
+}
+
+.panel>.panel-collapse>.table caption,
+.panel>.table caption,
+.panel>.table-responsive>.table caption {
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.panel>.table-responsive:first-child>.table:first-child,
+.panel>.table:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child,
+.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child,
+.panel>.table:first-child>tbody:first-child>tr:first-child,
+.panel>.table:first-child>thead:first-child>tr:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child td:first-child,
+.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child th:first-child,
+.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child td:first-child,
+.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child th:first-child,
+.panel>.table:first-child>tbody:first-child>tr:first-child td:first-child,
+.panel>.table:first-child>tbody:first-child>tr:first-child th:first-child,
+.panel>.table:first-child>thead:first-child>tr:first-child td:first-child,
+.panel>.table:first-child>thead:first-child>tr:first-child th:first-child {
+    border-top-left-radius: 3px
+}
+
+.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child td:last-child,
+.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child th:last-child,
+.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child td:last-child,
+.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child th:last-child,
+.panel>.table:first-child>tbody:first-child>tr:first-child td:last-child,
+.panel>.table:first-child>tbody:first-child>tr:first-child th:last-child,
+.panel>.table:first-child>thead:first-child>tr:first-child td:last-child,
+.panel>.table:first-child>thead:first-child>tr:first-child th:last-child {
+    border-top-right-radius: 3px
+}
+
+.panel>.table-responsive:last-child>.table:last-child,
+.panel>.table:last-child {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child,
+.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child,
+.panel>.table:last-child>tbody:last-child>tr:last-child,
+.panel>.table:last-child>tfoot:last-child>tr:last-child {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:first-child,
+.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:first-child,
+.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:first-child,
+.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:first-child,
+.panel>.table:last-child>tbody:last-child>tr:last-child td:first-child,
+.panel>.table:last-child>tbody:last-child>tr:last-child th:first-child,
+.panel>.table:last-child>tfoot:last-child>tr:last-child td:first-child,
+.panel>.table:last-child>tfoot:last-child>tr:last-child th:first-child {
+    border-bottom-left-radius: 3px
+}
+
+.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:last-child,
+.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:last-child,
+.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:last-child,
+.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:last-child,
+.panel>.table:last-child>tbody:last-child>tr:last-child td:last-child,
+.panel>.table:last-child>tbody:last-child>tr:last-child th:last-child,
+.panel>.table:last-child>tfoot:last-child>tr:last-child td:last-child,
+.panel>.table:last-child>tfoot:last-child>tr:last-child th:last-child {
+    border-bottom-right-radius: 3px
+}
+
+.panel>.panel-body+.table,
+.panel>.panel-body+.table-responsive,
+.panel>.table+.panel-body,
+.panel>.table-responsive+.panel-body {
+    border-top: 1px solid #ddd
+}
+
+.panel>.table>tbody:first-child>tr:first-child td,
+.panel>.table>tbody:first-child>tr:first-child th {
+    border-top: 0
+}
+
+.panel>.table-bordered,
+.panel>.table-responsive>.table-bordered {
+    border: 0
+}
+
+.panel>.table-bordered>tbody>tr>td:first-child,
+.panel>.table-bordered>tbody>tr>th:first-child,
+.panel>.table-bordered>tfoot>tr>td:first-child,
+.panel>.table-bordered>tfoot>tr>th:first-child,
+.panel>.table-bordered>thead>tr>td:first-child,
+.panel>.table-bordered>thead>tr>th:first-child,
+.panel>.table-responsive>.table-bordered>tbody>tr>td:first-child,
+.panel>.table-responsive>.table-bordered>tbody>tr>th:first-child,
+.panel>.table-responsive>.table-bordered>tfoot>tr>td:first-child,
+.panel>.table-responsive>.table-bordered>tfoot>tr>th:first-child,
+.panel>.table-responsive>.table-bordered>thead>tr>td:first-child,
+.panel>.table-responsive>.table-bordered>thead>tr>th:first-child {
+    border-left: 0
+}
+
+.panel>.table-bordered>tbody>tr>td:last-child,
+.panel>.table-bordered>tbody>tr>th:last-child,
+.panel>.table-bordered>tfoot>tr>td:last-child,
+.panel>.table-bordered>tfoot>tr>th:last-child,
+.panel>.table-bordered>thead>tr>td:last-child,
+.panel>.table-bordered>thead>tr>th:last-child,
+.panel>.table-responsive>.table-bordered>tbody>tr>td:last-child,
+.panel>.table-responsive>.table-bordered>tbody>tr>th:last-child,
+.panel>.table-responsive>.table-bordered>tfoot>tr>td:last-child,
+.panel>.table-responsive>.table-bordered>tfoot>tr>th:last-child,
+.panel>.table-responsive>.table-bordered>thead>tr>td:last-child,
+.panel>.table-responsive>.table-bordered>thead>tr>th:last-child {
+    border-right: 0
+}
+
+.panel>.table-bordered>tbody>tr:first-child>td,
+.panel>.table-bordered>tbody>tr:first-child>th,
+.panel>.table-bordered>thead>tr:first-child>td,
+.panel>.table-bordered>thead>tr:first-child>th,
+.panel>.table-responsive>.table-bordered>tbody>tr:first-child>td,
+.panel>.table-responsive>.table-bordered>tbody>tr:first-child>th,
+.panel>.table-responsive>.table-bordered>thead>tr:first-child>td,
+.panel>.table-responsive>.table-bordered>thead>tr:first-child>th {
+    border-bottom: 0
+}
+
+.panel>.table-bordered>tbody>tr:last-child>td,
+.panel>.table-bordered>tbody>tr:last-child>th,
+.panel>.table-bordered>tfoot>tr:last-child>td,
+.panel>.table-bordered>tfoot>tr:last-child>th,
+.panel>.table-responsive>.table-bordered>tbody>tr:last-child>td,
+.panel>.table-responsive>.table-bordered>tbody>tr:last-child>th,
+.panel>.table-responsive>.table-bordered>tfoot>tr:last-child>td,
+.panel>.table-responsive>.table-bordered>tfoot>tr:last-child>th {
+    border-bottom: 0
+}
+
+.panel>.table-responsive {
+    margin-bottom: 0;
+    border: 0
+}
+
+.panel-group {
+    margin-bottom: 20px
+}
+
+.panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 4px
+}
+
+.panel-group .panel+.panel {
+    margin-top: 5px
+}
+
+.panel-group .panel-heading {
+    border-bottom: 0
+}
+
+.panel-group .panel-heading+.panel-collapse>.list-group,
+.panel-group .panel-heading+.panel-collapse>.panel-body {
+    border-top: 1px solid #ddd
+}
+
+.panel-group .panel-footer {
+    border-top: 0
+}
+
+.panel-group .panel-footer+.panel-collapse .panel-body {
+    border-bottom: 1px solid #ddd
+}
+
+.panel-default {
+    border-color: #ddd;
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #ddd
+}
+
+.panel-default>.panel-heading .badge {
+    color: #f5f5f5;
+    background-color: #333
+}
+
+.panel-default>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #ddd
+}
+
+.panel-primary {
+    border-color: #337ab7
+}
+
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7
+}
+
+.panel-primary>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #337ab7
+}
+
+.panel-primary>.panel-heading .badge {
+    color: #337ab7;
+    background-color: #fff
+}
+
+.panel-primary>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #337ab7
+}
+
+.panel-success {
+    border-color: #d6e9c6
+}
+
+.panel-success>.panel-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6
+}
+
+.panel-success>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #d6e9c6
+}
+
+.panel-success>.panel-heading .badge {
+    color: #dff0d8;
+    background-color: #3c763d
+}
+
+.panel-success>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #d6e9c6
+}
+
+.panel-info {
+    border-color: #bce8f1
+}
+
+.panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1
+}
+
+.panel-info>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #bce8f1
+}
+
+.panel-info>.panel-heading .badge {
+    color: #d9edf7;
+    background-color: #31708f
+}
+
+.panel-info>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #bce8f1
+}
+
+.panel-warning {
+    border-color: #faebcc
+}
+
+.panel-warning>.panel-heading {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc
+}
+
+.panel-warning>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #faebcc
+}
+
+.panel-warning>.panel-heading .badge {
+    color: #fcf8e3;
+    background-color: #8a6d3b
+}
+
+.panel-warning>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #faebcc
+}
+
+.panel-danger {
+    border-color: #ebccd1
+}
+
+.panel-danger>.panel-heading {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1
+}
+
+.panel-danger>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #ebccd1
+}
+
+.panel-danger>.panel-heading .badge {
+    color: #f2dede;
+    background-color: #a94442
+}
+
+.panel-danger>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #ebccd1
+}
+
+.wrapper-p-grid {
+    grid-template-columns: 25% 25% 25%;
+    grid-gap: 10px;
+    background-color: #fff;
+    display: grid;
+    color: #444;
+}
+
+.box-p-grid {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    flex-wrap: inherit;
+}
+
+
+/* .container-cb {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 25px;
+    margin-left: 6px;
+} */
+
+
+/* Hide the default checkbox */
+
+
+/* .container-cb input {
+    visibility: hidden;
+    cursor: pointer;
+} */
+
+
+/* Create a custom checkbox */
+
+
+/* .mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: lightgray;
+}
+
+.container-cb:hover input~.mark {
+    background-color: gray;
+}
+
+.container-cb input:checked~.mark {
+    background-color: blue;
+} */
+
+
+/* Create the mark/indicator (hidden when not checked) */
+
+
+/* .mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+} */
+
+
+/* Show the mark when checked */
+
+
+/* .container-cb input:checked~.mark:after {
+    display: block;
+} */
+
+
+/* Style the mark/indicator */
+
+
+/* .container-cb .mark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+} */
+
+.d-p-none {
+    display: none;
+}
+
+input[type=checkbox]+label {
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    padding: 0.2em;
+}
+
+input[type=checkbox]+label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.3em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+
+input[type=checkbox]+label:active:before {
+    transform: scale(0);
+}
+
+input[type=checkbox]:checked+label:before {
+    background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen;
+    color: #fff;
+}
+
+input[type=checkbox]:disabled+label:before {
+    transform: scale(1);
+    border-color: #aaa;
+}
+
+input[type=checkbox]:checked:disabled+label:before {
+    transform: scale(1);
+    background-color: #bfb;
+    border-color: #bfb;
+}

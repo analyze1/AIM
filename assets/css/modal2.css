@@ -1,0 +1,16 @@
+/* CSS Document */
+
+.modal-body {
+        position: relative;
+		background-color: #fff;
+		height: 750px;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #999;
+        width: 900px; /* SET THE WIDTH OF THE MODAL */
+        margin: -50px 0 0 -100px; /* CHANGE MARGINS TO ACCOMMODATE THE NEW WIDTH */
+		max-height: 750px;
+    }

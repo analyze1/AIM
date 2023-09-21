@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!--
+    The following is a complete HTML snippet that can be used on your form for
+    displaying the captcha image.
+
+    This HTML snippet generates a CAPTCHA image, HTML5 audio controls, a button
+    to refresh the image and audio, as well as an input field for accepting the
+    captcha code input.
+
+    Modify to fit your needs and the website appearance.  The audio section can
+    also be removed if desired.
+
+    The same code is given twice, first as a whole and then repeated with
+    inline comments describing the individual elements.
+
+    Most of this code can be generated automatically with many customization
+    options by using the function Securimage::getCaptchaHtml() instead.
+-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample CAPTCHA HTML</title>
+  <link rel="stylesheet" href="securimage.css" media="screen">
+</head>
+<body>
+
+<div>
+  <img style="float: left; padding-right: 5px" id="captcha_image" src="securimage_show.php?<?php echo md5(uniqid(time)) ?>" alt="CAPTCHA Image">
+  <div id="captcha_image_audio_div">
+    <audio id="captcha_image_audio" preload="none" style="display: none">
+      <!-- <source id="captcha_image_source_mp3" src="securimage_play.php?id=1234&amp;format=mp3" type="audio/mpeg"> -->
+      <source id="captcha_image_source_wav" src="securimage_play.php?id=1234" type="audio/wav">
+      <object type="application/x-shockwave-flash" data="securimage_play.swf?bgcol=%23ffffff&amp;icon_file=images%2Faudio_icon.png&amp;audio_file=securimage_play.php" height="32" width="32">
+        <param name="movie" value="securimage_play.swf?bgcol=%23ffffff&amp;icon_file=images%2Faudio_icon.png&amp;audio_file=securimage_play.php" />
+      </object>
+    </audio>
+  </div>
+  <div id="captcha_image_audio_controls">
+    <a tabindex="-1" class="captcha_play_button" href="securimage_play.php?id=1234 ?>" onclick="return false">
+      <img class="captcha_play_image" height="25" width="25" src="images/audio_icon.png" alt="Play CAPTCHA Audio" style="border: 0px">
+      <img class="captcha_loading_image rotating" height="25" width="25" src="images/loading.png" alt="Loading audio" style="display: none">
+    </a>
+    <noscript>Enable Javascript for audio controls</noscript>
+  </div>
+
+  <a tabindex="-1" style="border: 0" href="#" title="Refresh Image" onclick="document.getElementById('captcha_image').src = 'securimage_show.php?' + Math.random(); captcha_image_audioObj.refresh(); this.blur(); return false">
+    <img height="25" width="25" src="images/refresh.png" alt="Refresh Image" onclick="this.blur()" style="border: 0px; vertical-align: bottom" />
+  </a>
+  
+  <input type="text" name="captcha_code" id="captcha_code">
+</div>
+  <br>
+
+  <script type="text/javascript" src="securimage.js"></script>
+  <script type="text/javascript">
+    captcha_image_audioObj = new SecurimageAudio({ audioElement: 'captcha_image_audio', controlsElement: 'captcha_image_audio_controls' });
+  </script>
+  
+
+
+
+</body>
+</html>

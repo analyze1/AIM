@@ -1,0 +1,32 @@
+.w4-per {
+    width: 4% !important;
+}
+
+.w5-per {
+    width: 5% !important;
+}
+
+.w450-px {
+    width: 450px !important;
+}
+
+.w14-per {
+    width: 14% !important;
+}
+
+.w85-per {
+    width: 85% !important;
+    margin: auto !important;
+}
+
+.th-bd-fix {
+    border-width: 1px 1px 1px 1px !important;
+    border-color: #2b0202 !important;
+    vertical-align: middle !important;
+}
+
+.f-bold {
+    font-weight: bold !important;
+    color: black !important;
+    background-color: #f9f9f9 !important;
+}
