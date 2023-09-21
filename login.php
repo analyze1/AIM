@@ -15,7 +15,7 @@ $GLOBALS['DEBUG_MODE'] = 1;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv='cache-control' content='no-cache'>
     <meta http-equiv="Pragma" content="no-cache" />
-    <link rel="shortcut icon" href="themes/img/VIBM.ico" />
+    <link rel="shortcut icon" href="img4/AIM_mini.png" />`
     <title>ประกันภัยออนไลน์ MVinsurance</title>
     <!-- particles.js container -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -75,9 +75,10 @@ $GLOBALS['DEBUG_MODE'] = 1;
     <div id="particles-js"></div>
     <div class="container-chrismas">
         <div class="wrap-login100">
-            <div class="login100-form-title">
+            <div class="login100-form-title" style="background-color: #439eee !important;">
                 <span class="login100-form-title-1 w-100-p">
-                    <img src="form_login/images/logo viriyah suzuki web.png" class="mg-t-l" width="30%" alt="">
+                    <!-- <img src="form_login/images/logo viriyah suzuki web.png" class="mg-t-l" width="30%" alt=""> -->
+                    <img src="img4/AIM.png" class="mg-t-l" width="20%" style="margin-top: 5px;" alt="">
                 </span>
             </div>
             <!-- <div style="display: flex;justify-content: center;">
@@ -85,7 +86,7 @@ $GLOBALS['DEBUG_MODE'] = 1;
                     <p style="color: black;font-weight: bold; font-size: 1rem;text-align: center;font-size: 18px;">ขออภัยในความไม่สะดวก</p>
                 </span> -->
 
-                <!-- <span style="color: green;font-size: 22px;">ระบบสามารถใช้งานได้ตามปกติ ใช้เวลารวม 3ชม. ขอบคุณครับ<br>
+            <!-- <span style="color: green;font-size: 22px;">ระบบสามารถใช้งานได้ตามปกติ ใช้เวลารวม 3ชม. ขอบคุณครับ<br>
                 </span> -->
             <!-- </div> -->
             <div class="flex-container">
@@ -108,7 +109,7 @@ $GLOBALS['DEBUG_MODE'] = 1;
                                 <div style="text-align: center;
                                 width: 100%;"> <span class="title-text">ฝ่ายการตลาด</span></div>
                                 <div class="text-center"> 063-906-3563 ,
-                                093-323-8814 , 063-906-3561</div>
+                                    093-323-8814 , 063-906-3561</div>
                             </div>
                         </b>
                     </div>
@@ -158,9 +159,9 @@ $GLOBALS['DEBUG_MODE'] = 1;
                                     <div class="carousel-item active" data-bs-interval="2000">
                                         <img src="./images/MVinsurance.jpg" class="d-block w-100 myImg" width="611" height="365" alt="...">
                                     </div>
-                                    <div class="carousel-item">
+                                    <!-- <div class="carousel-item">
                                         <img src="./images/slideshow/1.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_1.jpg')">
-                                    </div>
+                                    </div> -->
                                     <div class="carousel-item">
                                         <img src="./images/slideshow/2.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_2.jpg')">
                                     </div>
@@ -192,9 +193,9 @@ $GLOBALS['DEBUG_MODE'] = 1;
                         </div>
                         <div class="newsIcon">
                             <label class="qrcode">QR CODE HOTLINE</label>
-                            <img width="150" height="150" src="form_login/images/QR_Jeab.png" class="img-fluid" title=""  onclick="window.open(`https://line.me/ti/p/M55URwo8xZ`)">
-                            <img width="150" height="150" src="form_login/images/QR_Aoae.png" class="img-fluid" title=""  onclick="window.open(`https://line.me/ti/p/n-5iMc61-F`)">
-                            <img width="150" height="150" src="form_login/images/QR_Big.png" class="img-fluid" title=""  onclick="window.open(`https://line.me/ti/p/Sl-vjCCDbr`)">
+                            <img width="150" height="150" src="form_login/images/QR_Jeab.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/M55URwo8xZ`)">
+                            <img width="150" height="150" src="form_login/images/QR_Aoae.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/n-5iMc61-F`)">
+                            <img width="150" height="150" src="form_login/images/QR_Big.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/Sl-vjCCDbr`)">
                         </div>
                     </div>
                 </div>

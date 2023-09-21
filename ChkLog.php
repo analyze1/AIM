@@ -13,7 +13,6 @@ header('Content-Type: text/html; charset=utf-8');
 include "./inc/connectdbs.pdo.php";
 $_contextMitSu = PDO_CONNECTION::fourinsure_mitsu();
 $_contextAccount = PDO_CONNECTION::fourinsure_account();
-
 $xuser = trim($_POST["f_user"]);
 $xpass = trim($_POST["f_pass"]);
 

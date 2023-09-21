@@ -22,7 +22,7 @@ define('_PatchVerify', 'https://www.4insurance.co.th/composer/shared/citizen-ver
 /****************** LinkViriyahPaymentcredit *********************************************************************/
 define('_LinkPaymentViriyahCredit', 'https://www.4insurance.co.th/composer/shared/viriyah-payment');
 
-define('_LinkViriyahCreditOnly','https://viriyah.net/payment/viriyah-payment.php');
+define('_LinkViriyahCreditOnly', 'https://viriyah.net/payment/viriyah-payment.php');
 
 /****************** LinkViriyahPaymentcredit Local*************************************************/
 define('_LinkPaymentViriyahCreditLocal', 'http://localhost:8080/4insurance/composer/shared/viriyah-payment/full-payment.php');
@@ -48,7 +48,7 @@ define('_USER_NEW_FOUR', 'fourinsure_insu');
 define('_PASS_NEW_FOUR', '557cHwu5T7');
 
 //pase Account Base
-define('_FourinsureAcountUser', 'fourinsure_acc');
+define('_FourinsureAcountUser', 'fourinsure_account');
 define('_FourinsureAcountPass', '557cHwu5T7');
 
 //pase My4ib

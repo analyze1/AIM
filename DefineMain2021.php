@@ -44,16 +44,17 @@ define('_PassSMS', 'B544BD194EFB029A66344EA3135C9571230B006F0E566C52B6371AF2CDB7
 define('_MainViriyahNet', 'http://viriyah.net');
 
 //root connect
-define('_HOST_CONNECT', '192.168.1.104');
+// define('_HOST_CONNECT', '192.168.1.104');
+define('_HOST_CONNECT', '203.146.170.105');
 
 
 //pase Fourinsurance
-define('_USER_NEW_FOUR', 'fourinsure_insu');
-define('_PASS_NEW_FOUR', '557cHwu5T7');
+define('_USER_NEW_FOUR', 'fourinsure_insured');
+define('_PASS_NEW_FOUR', 'itf@ur1972');
 
 //pase Account Base
-define('_FourinsureAcountUser', 'fourinsure_acc');
-define('_FourinsureAcountPass', '557cHwu5T7');
+define('_FourinsureAcountUser', 'fourinsure_mitsu');
+define('_FourinsureAcountPass', 'itf@ur1972');
 
 //pase My4ib
 define('_SuzukiRenewUser', 'my4ib_Renew');
