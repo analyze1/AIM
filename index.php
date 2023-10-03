@@ -494,7 +494,8 @@ include "pages/check-ses.php";
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home"></i> <?php echo $_SESSION["strUser"]; ?> :
-                        <?php echo $_SESSION["strName"]; ?>
+                        <!-- <?php echo $_SESSION; ?> -->
+                        <?php echo $_SESSION["strUser"]; ?>
                         <span class="divider">
                             <i class="icon-angle-right"></i>
                         </span>

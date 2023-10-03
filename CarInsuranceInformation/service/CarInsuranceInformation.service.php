@@ -9,7 +9,7 @@ class CarInsuranceInformationService
 
 	public function getCarInsurance($model)
 	{
-		
+
 		$convertSearch = new ConvertSearchDataCarInsuranceInformationService();
 		$rowCount = new RowCountCarInsuranceInformationService($this->_context);
 		$convert = new ConvertDataCarInsuranceService();
@@ -20,11 +20,48 @@ class CarInsuranceInformationService
 		$sqlLimit = $convertSearch->sqlLimit($model->RequestArr);
 		$sqlStartDate = "AND `data`.start_date > '2021-01-01'";
 		$sqlUserLogin = $convertSearch->sqlUserLoginSearch($model->UserLogin);
-		$rowFull = $rowCount->countCarInsurance($searchAll,$sqlUserLogin,$model->PersonType);
-		
-		
+		$rowFull = $rowCount->countCarInsurance($searchAll, $sqlUserLogin, $model->PersonType);
+
+		if ($model->UserType == 'TIP') {
+			$condition = "WHERE insuree.person = '$model->PersonType' AND insuree.type = 'TIP' AND
+			(
+				data.id_data LIKE '%$searchAll%'
+				OR insuree.name LIKE '%$searchAll%'
+				OR insuree.last LIKE '%$searchAll%'
+				OR insuree.title LIKE '%$searchAll%'
+				OR detail.car_body LIKE '%$searchAll%'
+				OR detail.n_motor LIKE '%$searchAll%'
+				OR act.p_act LIKE '%$searchAll%'
+				OR act.PactOnline LIKE '%$searchAll%'
+				OR req.EditAct_id LIKE '%$searchAll%'
+				OR req.Edit_CarBody LIKE '%$searchAll%'
+				OR req.Edit_Nmotor LIKE '%$searchAll%'
+				OR req.Cus_title LIKE '%$searchAll%'
+				OR req.Cus_name LIKE '%$searchAll%'
+				OR req.Cus_last LIKE '%$searchAll%'
+			)";
+		} else {
+			$condition = "WHERE insuree.person = '$model->PersonType' AND insuree.type = '' AND
+			(
+				data.id_data LIKE '%$searchAll%'
+				OR insuree.name LIKE '%$searchAll%'
+				OR insuree.last LIKE '%$searchAll%'
+				OR insuree.title LIKE '%$searchAll%'
+				OR detail.car_body LIKE '%$searchAll%'
+				OR detail.n_motor LIKE '%$searchAll%'
+				OR act.p_act LIKE '%$searchAll%'
+				OR act.PactOnline LIKE '%$searchAll%'
+				OR req.EditAct_id LIKE '%$searchAll%'
+				OR req.Edit_CarBody LIKE '%$searchAll%'
+				OR req.Edit_Nmotor LIKE '%$searchAll%'
+				OR req.Cus_title LIKE '%$searchAll%'
+				OR req.Cus_name LIKE '%$searchAll%'
+				OR req.Cus_last LIKE '%$searchAll%'
+			)";
+		}
+
 		$fetchInsurance = $this->_context
-		->query("SELECT 
+			->query("SELECT 
 		act.p_act
 		,act.tmp_act_id
 		,act.PactOnline
@@ -71,25 +108,9 @@ class CarInsuranceInformationService
 		INNER JOIN act ON (`data`.id_data = act.id_data)
 		INNER JOIN req ON (`data`.id_data = req.id_data)
 		INNER JOIN tb_br_car ON (detail.br_car = tb_br_car.id)
-		WHERE insuree.person = '$model->PersonType'AND 
-		(
-			data.id_data LIKE '%$searchAll%'
-			OR insuree.name LIKE '%$searchAll%'
-			OR insuree.last LIKE '%$searchAll%'
-			OR insuree.title LIKE '%$searchAll%'
-			OR detail.car_body LIKE '%$searchAll%'
-			OR detail.n_motor LIKE '%$searchAll%'
-			OR act.p_act LIKE '%$searchAll%'
-			OR act.PactOnline LIKE '%$searchAll%'
-			OR req.EditAct_id LIKE '%$searchAll%'
-			OR req.Edit_CarBody LIKE '%$searchAll%'
-			OR req.Edit_Nmotor LIKE '%$searchAll%'
-			OR req.Cus_title LIKE '%$searchAll%'
-			OR req.Cus_name LIKE '%$searchAll%'
-			OR req.Cus_last LIKE '%$searchAll%'
-		) $sqlUserLogin $sqlStartDate $sqlOrderBy $sqlLimit")->fetchAll(2);
+		$condition $sqlUserLogin $sqlStartDate $sqlOrderBy $sqlLimit")->fetchAll(2);
 
-		
+
 		// -- ,tb_mo_car.name AS CarModelName
 		// -- ,tb_cost.net
 		// -- ,tb_cost.cost
@@ -103,31 +124,29 @@ class CarInsuranceInformationService
 		$convertEquipment->createDataEndorseDecorationEquipment($fetchMappered);
 
 		$datasArr = array();
-		foreach($fetchMappered as $obj)
-		{
+		foreach ($fetchMappered as $obj) {
 			$_net = $convert->searchNet($obj->Cost);
 			$_cost = $convert->searchCost($obj->Cost);
 			$_mo = $convert->searchModel($obj->IdCarModel);
 
 			$map = new DataInsuranceInformationModel();
 			$map->StatusEmail = $convert->iconSendMail($obj);
-			$map->PrintInsurance = $convert->printInsuranceApplicationForm($obj,$model->UserLogin);
+			$map->PrintInsurance = $convert->printInsuranceApplicationForm($obj, $model->UserLogin);
 			$map->IdDataSend = $convert->buttonInformOnline($obj);
 			$map->Name = $convert->customerName($obj);
 			$map->SendDate = "$obj->SendDate";
 			$map->StartDate = $convert->protectionDate($obj);
-			$map->PrintAct = $convert->printAct($obj,$model->StatusUseAct);
+			$map->PrintAct = $convert->printAct($obj, $model->StatusUseAct);
 			$map->WSAPIONLINE = $convert->printWsApiAct($obj);
 			$map->MoCar = $_mo['name'];
 			$map->CarBody = $convert->numberBodyAndMotor($obj);
 			$map->Cost = $_cost['cost'];
 			$map->Pre = $convert->numberMoney($_net['net']);
-			$map->Product = $convert->equipmentName($obj,$convertEquipment);
+			$map->Product = $convert->equipmentName($obj, $convertEquipment);
 			$map->CostProduct = $convert->equipmentPremiumAdd($obj);
-			array_push($datasArr,$map);
-
+			array_push($datasArr, $map);
 		}
-		
+
 		$res = new DataTableCarInsuranceInformationResponseModel();
 		$res->Data->draw = $model->RequestArr['draw'];
 		$res->Data->recordsTotal = $rowFull;
@@ -137,4 +156,3 @@ class CarInsuranceInformationService
 		return $res;
 	}
 }
-?>

@@ -5,6 +5,7 @@ class CarInsuranceInformationRequestModel
 	public $UserLogin;
 	public $PersonType;
 	public $StatusUseAct;
+	public $UserType;
 }
 
 class DataTableCarInsuranceInformationListModel
@@ -43,4 +44,3 @@ class DataInsuranceInformationModel
 	public $Product;
 	public $CostProduct;
 }
-?>

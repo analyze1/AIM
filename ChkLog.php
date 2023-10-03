@@ -26,7 +26,7 @@ if ($_GET['log'] == 'sip') {
 if ($optClaim == '1') {
 	$sqlPS = " and c.pw = '$xpass' ";
 	$sesClaim = '1';
-	$query = "SELECT c.*,lg.id_log,lg.user as lguser ,lg.uname,lg.ulname,lg.mn_prb,lg.mn_red,lg.mn_year,lg.mn_new,lg.mn_stock,lg.logo_images,lg.icon_logo FROM tb_customer c INNER JOIN tb_login lg ON (c.user = lg.code_dealer) WHERE st_active ='Y' AND lg.user ='" . $xuser . "' AND lg.pass='" . $xpass . "' " . $where_sql . " ";
+	$query = "SELECT c.*,lg.id_log,lg.user as lguser ,lg.uname,lg.ulname,lg.mn_prb,lg.mn_red,lg.mn_year,lg.mn_new,lg.mn_stock,lg.logo_images,lg.icon_logo,lg.log_type FROM tb_customer c INNER JOIN tb_login lg ON (c.user = lg.code_dealer) WHERE st_active ='Y' AND lg.user ='" . $xuser . "' AND lg.pass='" . $xpass . "' " . $where_sql . " ";
 	$resBL = $_contextMitSu->query($query);
 	$total = $resBL->rowCount();
 	$row = $resBL->fetch(2);
@@ -66,6 +66,7 @@ $menu_stock = $row['mn_stock'];
 $menu_viewsale = $row['viewsale'];
 $logo_images = $row['logo_images'];
 $icon_logo = $row['icon_logo'];
+$log_type = $row['log_type'];
 $uname = $row['uname'];
 $ulname = $row['ulname'];
 $idtb_login = $row['id_log'];
@@ -105,6 +106,7 @@ if ($total == '0') {
 	$_SESSION['icon_logo'] = $icon_logo;
 	$_SESSION['telephone'] = $TeleNumber;
 	$_SESSION["idtb_login"] = $idtb_login;
+	$_SESSION["log_type"] = $log_type;
 	$_SESSION["lguser"] = $lguser;
 	$_SESSION["uname"] = $uname;
 	$_SESSION["ulname"] = $ulname;

@@ -2,15 +2,14 @@
 
 require_once('CarInsuranceInformation.vendor.php');
 $_database = PDO_CONNECTION::fourinsure_mitsu();
-if($_REQUEST['GetWork'] == 'Insurance')
-{
+if ($_REQUEST['GetWork'] == 'Insurance') {
 	$model = new CarInsuranceInformationRequestModel();
 	$model->RequestArr = $_REQUEST;
 	$model->UserLogin = $_REQUEST['UserLogin'];
 	$model->PersonType = $_REQUEST['PersonType'];
 	$model->StatusUseAct = $_REQUEST['StatusUseAct'];
+	$model->UserType = $_REQUEST['UserType'];
 	$res = new CarInsuranceInformationService($_database);
-	echo json_encode($res->getCarInsurance($model)); 
+	echo json_encode($res->getCarInsurance($model));
 	exit();
 }
-?>

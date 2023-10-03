@@ -75,7 +75,7 @@ $GLOBALS['DEBUG_MODE'] = 1;
     <div id="particles-js"></div>
     <div class="container-chrismas">
         <div class="wrap-login100">
-            <div class="login100-form-title" style="background-color: #439eee !important;">
+            <div class="login100-form-title" style="background-color: #0a355a !important;">
                 <span class="login100-form-title-1 w-100-p">
                     <!-- <img src="form_login/images/logo viriyah suzuki web.png" class="mg-t-l" width="30%" alt=""> -->
                     <img src="img4/AIM.png" class="mg-t-l" width="20%" style="margin-top: 5px;" alt="">
@@ -104,12 +104,12 @@ $GLOBALS['DEBUG_MODE'] = 1;
                         </div>
                         <b>
                             <div class="hotline">
-                                <div class="text-group"><span class="text-hotline"><i class="fas fa-phone-alt"></i>
+                                <!-- <div class="text-group"><span class="text-hotline"><i class="fas fa-phone-alt"></i>
                                         สายด่วน</span></div>
                                 <div style="text-align: center;
                                 width: 100%;"> <span class="title-text">ฝ่ายการตลาด</span></div>
                                 <div class="text-center"> 063-906-3563 ,
-                                    093-323-8814 , 063-906-3561</div>
+                                    093-323-8814 , 063-906-3561</div> -->
                             </div>
                         </b>
                     </div>
@@ -154,250 +154,234 @@ $GLOBALS['DEBUG_MODE'] = 1;
                     <div class="white">
                         <div>
                             <!-- <img src="./images/MVinsurance.jpg" alt=""> -->
-                            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="margin-top: 20px;">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-bs-interval="2000">
-                                        <img src="./images/MVinsurance.jpg" class="d-block w-100 myImg" width="611" height="365" alt="...">
-                                    </div>
-                                    <!-- <div class="carousel-item">
-                                        <img src="./images/slideshow/1.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_1.jpg')">
-                                    </div> -->
-                                    <div class="carousel-item">
-                                        <img src="./images/slideshow/2.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_2.jpg')">
+                                        <img src="./images/slideshow/c1.jpg" class="d-block w-100 myImg" width="611" height="365" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./images/slideshow/3.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_3.jpg')">
+                                        <img src="./images/slideshow/c2.jpg" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_2.jpg')">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./images/slideshow/4.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_4.jpg')">
+                                        <img src="./images/slideshow/c3.jpg" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_3.jpg')">
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="./images/slideshow/5.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_5.jpg')">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./images/slideshow/6.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_6.jpg')">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./images/slideshow/EM_MV_7.png" class="d-block w-100 myImg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" width="611" height="365" alt="..." onclick="handleOpenModal('./images/slideshow/EM_MV_7.png')">
-                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
-                        </div>
-                        <div class="newsIcon">
-                            <label class="qrcode">QR CODE HOTLINE</label>
-                            <img width="150" height="150" src="form_login/images/QR_Jeab.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/M55URwo8xZ`)">
+                            <div class="newsIcon">
+                                <!-- <label class="qrcode">QR CODE HOTLINE</label> -->
+                                <!-- <img width="150" height="150" src="form_login/images/QR_Jeab.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/M55URwo8xZ`)">
                             <img width="150" height="150" src="form_login/images/QR_Aoae.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/n-5iMc61-F`)">
-                            <img width="150" height="150" src="form_login/images/QR_Big.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/Sl-vjCCDbr`)">
+                            <img width="150" height="150" src="form_login/images/QR_Big.png" class="img-fluid" title="" onclick="window.open(`https://line.me/ti/p/Sl-vjCCDbr`)"> -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body"></div>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body"></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="captcha/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript">
-        if (navigator.userAgent.indexOf('Chrome') < 0) {
-            document.getElementById('error-browser').style.display = "";
-        }
+        <script src="captcha/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript">
+            if (navigator.userAgent.indexOf('Chrome') < 0) {
+                document.getElementById('error-browser').style.display = "";
+            }
 
-        function handleOpenModal(link) {
-            $('.modal-body').empty();
-            $('.modal-body').append(`
+            function handleOpenModal(link) {
+                $('.modal-body').empty();
+                $('.modal-body').append(`
                 <img src="${link}" class="d-block w-100" alt="...">
             `);
-        }
+            }
 
-        $("#captcha_code").attr('placeholder', 'พิมพ์ตัวเลขตามรูป');
-        $("#captcha_code").attr('style',
-            'width:155px;height:50px;background-color: #FFFFFF;font-size:15px; padding: 0px 17px;display: flex;'
-        );
+            $("#captcha_code").attr('placeholder', 'พิมพ์ตัวเลขตามรูป');
+            $("#captcha_code").attr('style',
+                'width:155px;height:50px;background-color: #FFFFFF;font-size:15px; padding: 0px 17px;display: flex;'
+            );
 
-        $.noConflict();
+            $.noConflict();
 
-        function reloadCaptcha() {
-            jQuery('#siimage').prop('src', 'captcha/securimage_show.php?sid=' + Math.random());
-        }
+            function reloadCaptcha() {
+                jQuery('#siimage').prop('src', 'captcha/securimage_show.php?sid=' + Math.random());
+            }
 
-        function processForm() {
-            if ($("#captcha_code").val() == '') {
-                alert('คีย์ตัวอักษรตามรูปภาพด้านล่าง ด้วยครับ!');
-                $("#captcha_code").focus();
+            function processForm() {
+                if ($("#captcha_code").val() == '') {
+                    alert('คีย์ตัวอักษรตามรูปภาพด้านล่าง ด้วยครับ!');
+                    $("#captcha_code").focus();
+                    return false;
+                }
+
+                jQuery.ajax({
+                    url: 'logincheck_captcha.php',
+                    type: 'POST',
+                    data: jQuery('#contact_form').serialize(),
+                    dataType: 'json'
+                }).done(function(data) {
+
+                    if (data.error === 0) {
+                        if (data.message == 'OK') {
+                            jQuery("#contact_form").attr("action", "ChkLog.php");
+                            jQuery("#contact_form").attr("onsubmit", "");
+                            jQuery('#btnSub').trigger("click");
+                            return true;
+                        }
+                        reloadCaptcha();
+                    } else {
+                        jQuery("#contact_form").attr("onsubmit", "return processForm()");
+                        alert('  ' + data.message);
+
+                        if (data.message.indexOf('Incorrect security code') >= 0) {
+                            jQuery('#captcha_code').val('');
+                            jQuery("#captcha_code").focus();
+                        }
+                    }
+                });
                 return false;
             }
 
-            jQuery.ajax({
-                url: 'logincheck_captcha.php',
-                type: 'POST',
-                data: jQuery('#contact_form').serialize(),
-                dataType: 'json'
-            }).done(function(data) {
-
-                if (data.error === 0) {
-                    if (data.message == 'OK') {
-                        jQuery("#contact_form").attr("action", "ChkLog.php");
-                        jQuery("#contact_form").attr("onsubmit", "");
-                        jQuery('#btnSub').trigger("click");
-                        return true;
-                    }
-                    reloadCaptcha();
+            var inset = 0;
+            setInterval(function() {
+                if (inset == 0) {
+                    $('#color_infinity').attr('color', 'red');
+                    inset++;
                 } else {
-                    jQuery("#contact_form").attr("onsubmit", "return processForm()");
-                    alert('  ' + data.message);
-
-                    if (data.message.indexOf('Incorrect security code') >= 0) {
-                        jQuery('#captcha_code').val('');
-                        jQuery("#captcha_code").focus();
-                    }
+                    $('#color_infinity').attr('color', 'black');
+                    inset--;
                 }
-            });
-            return false;
-        }
 
-        var inset = 0;
-        setInterval(function() {
-            if (inset == 0) {
-                $('#color_infinity').attr('color', 'red');
-                inset++;
-            } else {
-                $('#color_infinity').attr('color', 'black');
-                inset--;
+            }, 2000);
+
+            $(document).ready(function() {
+                $("#btnpopup").find("span").trigger("click");
+                //เปิด modal offline
+                // Swal.fire({
+                //     imageUrl: 'images/warming-mvinsurance.jpg',
+                //     imageWidth: 600,
+                //     width: 600,
+                //     imageAlt: 'Custom image',
+                // });
+            });
+
+            function myFunction() {
+                window.location.href = "login_freedate.php";
             }
 
-        }, 2000);
+            async function postApiAsync(_url, _params) {
+                return await $.ajax({
+                    type: "POST",
+                    url: _url,
+                    data: _params,
+                    dataType: "JSON",
+                    success: (res) => {
+                        return res;
+                    },
+                    error: (err) => {
+                        return err;
+                    }
+                });
+            }
 
-        $(document).ready(function() {
-            $("#btnpopup").find("span").trigger("click");
-            //เปิด modal offline
-            // Swal.fire({
-            //     imageUrl: 'images/warming-mvinsurance.jpg',
-            //     imageWidth: 600,
-            //     width: 600,
-            //     imageAlt: 'Custom image',
-            // });
-        });
-
-        function myFunction() {
-            window.location.href = "login_freedate.php";
-        }
-
-        async function postApiAsync(_url, _params) {
-            return await $.ajax({
-                type: "POST",
-                url: _url,
-                data: _params,
-                dataType: "JSON",
-                success: (res) => {
-                    return res;
-                },
-                error: (err) => {
-                    return err;
-                }
-            });
-        }
-
-        async function sendPassWord(id, tel) {
-            const url = './services/ForgetPassword/forget.controller.php';
-            let param = {
-                Controller: 'SendPassSMS',
-                DealerCode: id,
-                Number: tel
-            };
-            return await postApiAsync(url, param);
-        }
-
-        async function forgetPassword() {
-            try {
-
-                let userElm = document.querySelector('#f_user').value;
-                if (userElm == '') {
-                    Swal.fire({
-                        title: 'Username รหัสดีลเลอร์',
-                        text: 'กรุณากรอก Username',
-                        icon: 'warning',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'เข้าใจ'
-                    });
-                    return false;
-                }
+            async function sendPassWord(id, tel) {
                 const url = './services/ForgetPassword/forget.controller.php';
-                let params = {
-                    Controller: 'CheckUser',
-                    UserCode: userElm
+                let param = {
+                    Controller: 'SendPassSMS',
+                    DealerCode: id,
+                    Number: tel
                 };
+                return await postApiAsync(url, param);
+            }
 
-                let chktelinfo = await postApiAsync(url, params);
-                if (chktelinfo.Status === 200) {
-                    let number = chktelinfo.Data[0];
-                    const textApi = `ท่านต้องการส่ง SMS เพื่อรับรหัสผ่านที่เบอร์มือถือ ${number.numberX}`
-                    Swal.fire({
-                        title: 'ต้องการส่ง SMS?',
-                        text: textApi,
-                        icon: 'question',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'ต้องการส่ง',
-                        cancelButtonText: 'ไม่'
-                    }).then(async (result) => {
-                        console.log('กดส่ง', result);
-                        if (result.isConfirmed) {
+            async function forgetPassword() {
+                try {
 
-                            let sendRes = await sendPassWord(number.userCode, number.numberFull);
-                            console.log('หลังส่งsmsสำเร็จ', sendRes);
-                            if (sendRes.Status === 200) {
-                                Swal.fire({
-                                    text: 'ดำเนินการส่งเสร็จสิ้น',
-                                    icon: 'success',
-                                    confirmButtonColor: '#3085d6',
-                                    confirmButtonText: 'ปิด'
-                                });
-                            } else {
-                                Swal.fire({
-                                    text: 'ไม่สามารถส่ง SMS ได้กรุณาติดต่อเจ้าหน้าที่',
-                                    icon: 'error',
-                                    confirmButtonColor: '#3085d6',
-                                    confirmButtonText: 'ปิด'
-                                });
+                    let userElm = document.querySelector('#f_user').value;
+                    if (userElm == '') {
+                        Swal.fire({
+                            title: 'Username รหัสดีลเลอร์',
+                            text: 'กรุณากรอก Username',
+                            icon: 'warning',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'เข้าใจ'
+                        });
+                        return false;
+                    }
+                    const url = './services/ForgetPassword/forget.controller.php';
+                    let params = {
+                        Controller: 'CheckUser',
+                        UserCode: userElm
+                    };
+
+                    let chktelinfo = await postApiAsync(url, params);
+                    if (chktelinfo.Status === 200) {
+                        let number = chktelinfo.Data[0];
+                        const textApi = `ท่านต้องการส่ง SMS เพื่อรับรหัสผ่านที่เบอร์มือถือ ${number.numberX}`
+                        Swal.fire({
+                            title: 'ต้องการส่ง SMS?',
+                            text: textApi,
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ต้องการส่ง',
+                            cancelButtonText: 'ไม่'
+                        }).then(async (result) => {
+                            console.log('กดส่ง', result);
+                            if (result.isConfirmed) {
+
+                                let sendRes = await sendPassWord(number.userCode, number.numberFull);
+                                console.log('หลังส่งsmsสำเร็จ', sendRes);
+                                if (sendRes.Status === 200) {
+                                    Swal.fire({
+                                        text: 'ดำเนินการส่งเสร็จสิ้น',
+                                        icon: 'success',
+                                        confirmButtonColor: '#3085d6',
+                                        confirmButtonText: 'ปิด'
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        text: 'ไม่สามารถส่ง SMS ได้กรุณาติดต่อเจ้าหน้าที่',
+                                        icon: 'error',
+                                        confirmButtonColor: '#3085d6',
+                                        confirmButtonText: 'ปิด'
+                                    });
+                                }
                             }
-                        }
-                    });
-                } else {
+                        });
+                    } else {
+                        Swal.fire({
+                            text: chktelinfo.Data,
+                            icon: 'error',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'ปิด'
+                        });
+                    }
+                } catch (err) {
                     Swal.fire({
-                        text: chktelinfo.Data,
+                        text: err.responseText,
                         icon: 'error',
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'ปิด'
                     });
                 }
-            } catch (err) {
-                Swal.fire({
-                    text: err.responseText,
-                    icon: 'error',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'ปิด'
-                });
             }
-        }
-    </script>
+        </script>
 
 </body>
 
