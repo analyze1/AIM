@@ -9,6 +9,7 @@ $_contextFour = PDO_CONNECTION::fourinsure_insured();
 $_userLogin = $_SESSION["strUser"];
 $_userRights = $_SESSION['claim'];
 $_dateStatus = $_GET['dateStatus'];
+$_log_type = $_SESSION['log_type'];
 
 
 class CarService
@@ -64,6 +65,13 @@ class WorkRenewService
 
     public function getDataFollow($user, $rights, $dateStatus)
     {
+        if ($_SESSION['log_type'] == 'TIP') {
+            $condition = "data.work_type = 'TIP' AND";
+        } elseif ($_SESSION['log_type'] == 'AIM') {
+            $condition = '';
+        } else {
+            $condition = "data.work_type IS NULL AND";
+        }
         $toDayStatus = ($dateStatus == 'toDay') ? 'AND detail_renew.date_alert = DATE(NOW())' : '';
         $getSqlStr = $this->sqlStrUser($user, $rights);
         $sqlStr = "SELECT
@@ -106,6 +114,7 @@ class WorkRenewService
         INNER JOIN req ON (`data`.id_data  = req.id_data)
         INNER JOIN detail_renew ON (`data`.id_data = detail_renew.id_data)
         WHERE 
+        $condition
         -- detail_renew.detail_follow = '1'
         detail_renew.status = 'R'
         $getSqlStr
