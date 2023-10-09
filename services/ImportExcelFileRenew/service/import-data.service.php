@@ -61,8 +61,8 @@ class ImportData
 
         $arrIdData = explode('/', $this->_idDataDefault);
         $genIDYearSaka = substr($arrIdData[0], 0, 2);
-        $YearTh = date('Y')+543;
-        if(substr("$YearTh", 2, 3) != $genIDYearSaka){
+        $YearTh = date('Y') + 543;
+        if (substr("$YearTh", 2, 3) != $genIDYearSaka) {
             $genIDYearSaka = substr("$YearTh", 2, 3);
         }
         $whereIdData = (string)($genIDYearSaka . $id . '/' . $arrIdData[1] . '/');
@@ -70,14 +70,13 @@ class ImportData
         $res = $this->_contextMitsu->query($sql)->fetch(7);
         $idData = (string)($genIDYearSaka . $id . '/' . $arrIdData[1] . '/' . $arrIdData[2]);
 
-        if ($res)
-        {
+        if ($res) {
             $arrIdData = explode('/', $res);
             $generated = ((int)$arrIdData[2] + 1);
             $generatedToString = sprintf("%06d", $generated);
             $genIDYearSaka = substr($arrIdData[0], 0, 2);
-            $YearTh = date('Y')+543;
-            if(substr("$YearTh", 2, 3) != $genIDYearSaka){
+            $YearTh = date('Y') + 543;
+            if (substr("$YearTh", 2, 3) != $genIDYearSaka) {
                 $genIDYearSaka = substr("$YearTh", 2, 3);
             }
             $idData = (string)($genIDYearSaka . $id . '/' . $arrIdData[1] . '/' . $generatedToString);
@@ -265,19 +264,19 @@ class ImportData
     //TODO ReadData excel Other
     public function readOtherData($arr)
     {
-    
+
         if (!$arr) {
             return 'ไม่พบข้อมูล !';
         }
 
         $this->_genAct = $this->genQuickFindDataArrayAct(); //get act all
         $branchInfoArr[0] = $arr;
-    
+
         // $this->checkBranchUpload($arr);
         $this->_nameInform = $this->genNameInForm($this->_user);
 
         $lenghtBranch = count($branchInfoArr);
-        
+
         $result = array();
         $resArr = [];
         $totalNotFoundModelCar = 0;
@@ -285,18 +284,17 @@ class ImportData
         $totalSuccess = 0;
         $totalDuplicateChassis = 0;
 
-        for ($p = 0; $p < $lenghtBranch; $p++) 
-        {
+        for ($p = 0; $p < $lenghtBranch; $p++) {
             // $this->_user = (string)($branchInfoArr[$p][0])->C;
             $this->_position = $this->_user;
             $chassisNumberArr = $this->chassisNumberAllByDealer(); //ดึงเลขตัวถังที่เคยอัพไปแล้วออกมาเช็ค
             $round = count($branchInfoArr[$p]);
-            
+
             $pointer = 2;
-            
+
             for ($x = 0; $x < $round; $x++) {
                 $res = $this->mappingOtherToModel($branchInfoArr[$p][$pointer++]);
-                
+
                 if (!$res) {
                     continue;
                 }
@@ -320,9 +318,9 @@ class ImportData
                     $totalNotFoundModelCar++;
                     continue;
                 }
-                
+
                 $carOld = $this->genYearCar($res->yearCar);
-                    
+
                 //set ปีจดทะเบียนรถใหม่ทุกครั้งหลังจากคำนวณหาปีรถแล้ว
                 $res->yearCar = $this->_setYearCar;
 
@@ -360,7 +358,7 @@ class ImportData
                 $result[$this->_user][$x]['cost'] = $cost;
                 $result[$this->_user][$x]['res'] = $res;
 
-                
+
                 $resArr[$res->carBody]['saveToTableData'] = $this->saveToTableData($res);
                 $resArr[$res->carBody]['saveToTableDetail'] = $this->saveToTableDetail($res);
                 if ($cost->action) {
@@ -427,7 +425,7 @@ class ImportData
         $catCar = $this->genCatCarId($res->catCar);
         $this->_genCarTypeId = $catCar;
         $cost = $this->genCostFormFour($res->modelCar, $res->sumAssured, $carOld, $catCar);
-        
+
         if (gettype($cost) == 'string') {
             $resArr['notfoundCost'] = true;
             $totaNotfoundCost++;
@@ -458,9 +456,14 @@ class ImportData
 
     private function saveToTableData($model)
     {
+        if ($_SESSION['log_type'] == 'TIP') {
+            $work_type = "TIP";
+        } else {
+            $work_type = NULL;
+        }
         $data = [
             'login' => "$this->_user",
-            'com_data' => empty($model->sort)?'TMSTH':"$model->sort",
+            'com_data' => empty($model->sort) ? 'TMSTH' : "$model->sort",
             'send_date' => "$model->sendDate",
             'id_data' => "$model->idData",
             'p_act' => '-',
@@ -475,10 +478,10 @@ class ImportData
             'OrderAct' => 0.00,
             'uptun' => '0',
             'renewuse' => "$this->_position",
-            'save_login' => "$this->_user"
-            
+            'save_login' => "$this->_user",
+            'work_type' => "$work_type"
         ];
-        $sql = "INSERT INTO `data` (`login`, com_data, send_date, id_data, p_act, costCost, ty_inform, Status_Email, `start_date`, end_date, name_inform, name_gain, doc_type, OrderAct, uptun, renewuse, save_login) VALUES (:login, :com_data, :send_date, :id_data, :p_act, :costCost, :ty_inform, :Status_Email, :start_date, :end_date, :name_inform, :name_gain, :doc_type, :OrderAct, :uptun, :renewuse, :save_login)";
+        $sql = "INSERT INTO `data` (`login`, com_data, send_date, id_data, p_act, costCost, ty_inform, Status_Email, `start_date`, end_date, name_inform, name_gain, doc_type, OrderAct, uptun, renewuse, save_login, work_type) VALUES (:login, :com_data, :send_date, :id_data, :p_act, :costCost, :ty_inform, :Status_Email, :start_date, :end_date, :name_inform, :name_gain, :doc_type, :OrderAct, :uptun, :renewuse, :save_login, :work_type)";
         $res = $this->_contextMitsu->prepare($sql)->execute($data);
         return $res;
     }
@@ -585,11 +588,11 @@ class ImportData
     {
         $addressCus = $this->getAddressCus($model->province, $model->tumbon, $model->amphur);
         $idCard = '';
-        $iCardNiti = '';        
-        if($this->checkPerson($model->person)){
+        $iCardNiti = '';
+        if ($this->checkPerson($model->person)) {
             $person = 1;
             $idCard = $model->idCard;
-        }else{
+        } else {
             $person = 2;
             $iCardNiti = $model->idCard;
         }
@@ -601,8 +604,8 @@ class ImportData
             'person' => "$person",
             'vocation' => 'ธุรกิจส่วนตัว',
             'career' => 2,
-            'icard' =>"$idCard",
-            'icard_niti' =>"$iCardNiti",
+            'icard' => "$idCard",
+            'icard_niti' => "$iCardNiti",
             'add' => "$model->houseNumber",
             'lane' => "$model->alley",
             'road' => "$model->road",
@@ -749,37 +752,37 @@ class ImportData
 
     private function mappingOtherToModel($data) //excel upload muti
     {
-        
+
         $model = new ImportExcelFileRenewModelRequest();
 
         $saka = $this->findSaka($this->_user); //ค้นสาขา
-       
+
         $dataObj = (object)$data; // convert data to object
-        
+
         //ตัดหา เลขตัวถัง
         // $arrCarModel = $this->separateCarModel(trim($dataObj->B));//edit wait
-        $objCarModel = $this->findModelCar($dataObj->AJ, $dataObj->Z);//หารุ่นรถหา  ID รถ ราคารถและชนิดรถเลย
-        
+        $objCarModel = $this->findModelCar($dataObj->AJ, $dataObj->Z); //หารุ่นรถหา  ID รถ ราคารถและชนิดรถเลย
+
         $model->modelCar = $objCarModel->id_mo_car;
         $model->modelCarSub = $objCarModel->id;
         $model->carPrice = $objCarModel->price_car;
         $model->carTypeId = $objCarModel->carType;
 
         // $model->CarSubID = $objCarModel->id;
-   
+
         $model->idData = ($saka) ? $this->generatIdDataBySaka($saka) : $this->generatIdData();
-     
+
         // $model->carTypeId = trim($dataObj->A);//ไม่มี id ประเภทรถส่งมา
-        
+
         $model->carMotor = trim($dataObj->AA);
         $model->carBody = trim($dataObj->Z);
-        $model->yearCar = empty($dataObj->AH)?date('Y')-1:$dataObj->AH;//ปีรถ
-        
+        $model->yearCar = empty($dataObj->AH) ? date('Y') - 1 : $dataObj->AH; //ปีรถ
+
         $model->cc = ''; //$dataObj->F;
 
-        $model->startDate = $this->genOtherStartDate($dataObj->AB);//วันเริ่มคุ้มครอง
-        $model->endDate = $this->genDateYMD($model->startDate);//วันสิ้นสุดวันคุ้มครอง
-        $model->sendDate = $this->genSendDate($model->startDate);//วันที่แจ้งงาน
+        $model->startDate = $this->genOtherStartDate($dataObj->AB); //วันเริ่มคุ้มครอง
+        $model->endDate = $this->genDateYMD($model->startDate); //วันสิ้นสุดวันคุ้มครอง
+        $model->sendDate = $this->genSendDate($model->startDate); //วันที่แจ้งงาน
 
         $model->beneficiary = 'ไม่ระบุ';
 
@@ -809,7 +812,7 @@ class ImportData
         $model->sort = 'VIB_S';
         $model->text = $model->concatmodel();
         $model->Branch = (string)$this->_user;
-        $model->idCard = empty($dataObj->G)?'':(string)str_replace(['-','','/'],'',$dataObj->G);
+        $model->idCard = empty($dataObj->G) ? '' : (string)str_replace(['-', '', '/'], '', $dataObj->G);
         return $model;
     }
 
@@ -1197,7 +1200,7 @@ class ImportData
             $updateEndDate = $this->_reSolveEndDateService->genNewDate($x->sendDate, $x->startDate, $x->endDate, $x->id_data);
             $sumAssured = $this->calculateCostYearByNing($genYear, $price);
 
-            if(!$sumAssured){
+            if (!$sumAssured) {
                 $arr['sumAssured-no'][$x->id_data] = $sumAssured;
                 $arr['genYear-no'][$x->id_data] = $genYear;
                 $arr['price-no'][$x->id_data] = $price;
@@ -1207,8 +1210,8 @@ class ImportData
 
             $costNew = $this->fixBugCostFormFour($carId, $sumAssured, $genYear, $carType);
             // $arr['updateRegisDateToDetail'][$x->id_data] = $this->updateRegisDateToDetail($x->id_data, $changeRegisDate);
-            
-            if(!$costNew){
+
+            if (!$costNew) {
                 // $this->_reSolveEndDateService->updateChangeCost($x->id_data,1);
                 $arr['updateToTableDetailRenew-no'][$x->id_data] = $this->updateToTableDetailRenew($x->id_data, false, $sumAssured, $carType, $updateEndDate->newEndDate);
                 continue;
@@ -1218,7 +1221,7 @@ class ImportData
             $arr['updateEndDateToTableData'][$x->id_data] = $updateEndDate;*/
 
             // $arr['updateRegisDateToDetail'][$x->id_data] = $this->updateRegisDateToDetail($x->id_data, $changeRegisDate);
-            $this->_reSolveEndDateService->updateChangeCost($x->id_data,2);
+            $this->_reSolveEndDateService->updateChangeCost($x->id_data, 2);
             $arr['updateToTableDetailRenew'][$x->id_data] = $this->updateToTableDetailRenew($x->id_data, $costNew, $sumAssured, $carType, $updateEndDate->newEndDate);
             $arr['updateEndDateToTableData'][$x->id_data] = $this->updateEndDateToTableData($updateEndDate, $x->id_data, $costNew->id_cost);
         }
@@ -1426,7 +1429,8 @@ class ImportData
         $res = $this->_contextFour->query($sql)->fetch(5);
         return $res;
     }
-    private function checkPerson($type){
+    private function checkPerson($type)
+    {
         $x = true;
         switch ($type) {
             case '1':
@@ -1434,13 +1438,13 @@ class ImportData
                 break;
             case '2':
                 $x = false;
-                break;    
+                break;
             case 'บุคคลธรรมดา':
                 $x = true;
-                break;      
+                break;
             case 'นิติบุคคล':
                 $x = false;
-                break;       
+                break;
         }
         return $x;
     }
@@ -1456,11 +1460,11 @@ class ImportData
     public function roundNing($cost, $index = 1)
     {
         // สูตรคำนวณกรณีหลักล้านขึ้นไป
-		$numlength = strlen($cost);
-		if($numlength >=7){
-			$x = ($numlength*-1)+2;
-			return round($cost,$x);
-		}
+        $numlength = strlen($cost);
+        if ($numlength >= 7) {
+            $x = ($numlength * -1) + 2;
+            return round($cost, $x);
+        }
         $newstring = substr($cost, $index);
         if (intval($newstring) != 0) {
             $newstring = intval($cost) + (10000 - $newstring);
@@ -1469,7 +1473,7 @@ class ImportData
         }
         return $newstring;
     }
-    
+
     public function genYearCarForCost($year)
     {
         $yearNow = (int)date('Y');
@@ -1477,19 +1481,20 @@ class ImportData
         return $yearNumber;
     }
 
-    public function wrongYearCheck($startDate,$regisCarOld,$idData)
+    public function wrongYearCheck($startDate, $regisCarOld, $idData)
     {
-        $arrDate = explode("-",$startDate);
-        if("$arrDate[0]" != $regisCarOld){
+        $arrDate = explode("-", $startDate);
+        if ("$arrDate[0]" != $regisCarOld) {
             $sql = "UPDATE `detail` SET regis_date = '2021' WHERE `detail`.id_data = '$idData' ";
             $res = $this->_contextMitsu->prepare($sql)->execute();
             return "2021";
         }
         return false;
     }
-    
-    public function getYear($date){
-        $year = substr("$date",0,4);
+
+    public function getYear($date)
+    {
+        $year = substr("$date", 0, 4);
         return intval($year);
     }
 }

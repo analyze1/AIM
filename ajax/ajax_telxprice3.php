@@ -5,6 +5,14 @@ if ($_SESSION["strUser"] != 'admin' && $_SESSION['claim'] != 'ADMIN') {
     $sqltext = " AND userdetail='$_SESSION[strUser]' ";
 }
 
+if ($_SESSION['log_type'] == 'TIP') {
+    $condition = "data.work_type = 'TIP' AND";
+} elseif ($_SESSION['log_type'] == 'AIM') {
+    $condition = '';
+} else {
+    $condition = "data.work_type IS NULL OR data.work_type = '' AND";
+}
+
 set_time_limit(3000);
 
 function thaiDate($datetime)
@@ -113,7 +121,7 @@ $end = $_GET['length'];
 
 $EndYear = date('Y');
 $StartYear = $EndYear - 3;
-$dateN = date('Y-m-d',strtotime("+1 day"));
+$dateN = date('Y-m-d', strtotime("+1 day"));
 
 if ($_GET['order'][0]['column'] == 0) {
 } else {
@@ -134,6 +142,7 @@ FROM
 	INNER JOIN insuree ON(`data`.id_data = insuree.id_data)
 	INNER JOIN detail_renew ON(`data`.id_data = detail_renew.id_data)
 WHERE
+$condition
 detail_renew.`status` = 'S' 
 AND insuree.name != ''  ";
 if ($_SESSION["strUser"] != 'admin' && $_SESSION['claim'] != 'ADMIN') {

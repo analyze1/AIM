@@ -6,6 +6,14 @@ include "../inc/function.php";
 $_contextMitsu = PDO_CONNECTION::fourinsure_mitsu();
 $_contextFour = PDO_CONNECTION::fourinsure_insured();
 
+if ($_SESSION['log_type'] == 'TIP') {
+    $condition = "data.work_type = 'TIP' AND";
+} elseif ($_SESSION['log_type'] == 'AIM') {
+    $condition = '';
+} else {
+    $condition = "data.work_type IS NULL OR data.work_type = '' AND";
+}
+
 if ($_SESSION["strUser"] != 'admin' && $_SESSION['claim'] != 'ADMIN') {
     $sqltext = " AND userdetail='DEALER' ";
 }
@@ -44,7 +52,7 @@ $query .= "INNER JOIN act ON (`data`.id_data = act.id_data) ";
 $query .= "INNER JOIN detail ON (`data`.id_data = detail.id_data) ";
 $query .= "INNER JOIN insuree ON (`data`.id_data  = insuree.id_data) ";
 $query .= "INNER JOIN req ON (`data`.id_data  = req.id_data) ";
-$query .= "WHERE insuree.name!='' AND req.EditCancel <> 'Y' ";
+$query .= "WHERE $condition insuree.name!='' AND req.EditCancel <> 'Y' ";
 
 
 if ($_SESSION["strUser"] != 'admin' && $_SESSION['claim'] != 'ADMIN') {
@@ -52,7 +60,7 @@ if ($_SESSION["strUser"] != 'admin' && $_SESSION['claim'] != 'ADMIN') {
 }
 $limit = $_POST['showList'];
 $whereLimit = '10';
-if($limit){
+if ($limit) {
     $whereLimit = $limit;
 }
 echo "<script> var _pageLength = '$whereLimit'</script>";
@@ -65,21 +73,20 @@ $objQuery = $_contextMitsu->query($query)->fetchAll(2);
 <link type="text/css" rel="stylesheet" type="text/css" href="data_table/css/jquery.dataTables.css">
 
 <style type="text/css">
-.table th,
-.table td {
-    text-align: center !important;
-    line-height: 20px !important;
-}
+    .table th,
+    .table td {
+        text-align: center !important;
+        line-height: 20px !important;
+    }
 
-table.dataTable thead th,
-table.dataTable thead td {
-    padding: 10px 0px !important;
-    border-bottom: 1px solid #111111;
-}
+    table.dataTable thead th,
+    table.dataTable thead td {
+        padding: 10px 0px !important;
+        border-bottom: 1px solid #111111;
+    }
 </style>
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-striped table-bordered"
-    id="detail_table" style="font-size:12px;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-striped table-bordered" id="detail_table" style="font-size:12px;">
     <thead>
         <tr>
             <th width="8%"></th>
@@ -134,30 +141,31 @@ table.dataTable thead td {
 
         ?>
 
-        <tr align="center">
-            <?php
+            <tr align="center">
+                <?php
                 $sql_check_e_sql = "SELECT id_data FROM detail_renew WHERE  status ='E' AND id_data = '" . $row['id_data'] . "' ";
                 $sql_check_e_query = $_contextMitsu->query($sql_check_e_sql);
                 $sql_check_e_array = $sql_check_e_query->fetch(2);
                 ?>
-            <td>
-                <?php
+                <td>
+                    <?php
                     if ($row_detailRenew['status'] != 'E' && empty($sql_check_e_array)) { ?>
-                <a class="btn btn-success" style = "white-space: nowrap" onclick="funcrenew('<?php echo $row['id_data']; ?>')"
-                    data-original-title="ดูข้อมูล">
-                    ดูข้อมูล</a>
+                        <a class="btn btn-success" style="white-space: nowrap" onclick="funcrenew('<?php echo $row['id_data']; ?>')" data-original-title="ดูข้อมูล">
+                            ดูข้อมูล</a>
 
-                <?php } else { 
-                        if ($status_email_array == 'Y' || 
-                            $status_email_array == 'C' || 
-                            $status_email_array == 'N') {
-                ?>
-                    <button class="btn btn-success" id="prints" style = "white-space: nowrap" onclick="renewInsureBtn()">แจ้งงานแล้ว</button>
+                        <?php } else {
+                        if (
+                            $status_email_array == 'Y' ||
+                            $status_email_array == 'C' ||
+                            $status_email_array == 'N'
+                        ) {
+                        ?>
+                            <button class="btn btn-success" id="prints" style="white-space: nowrap" onclick="renewInsureBtn()">แจ้งงานแล้ว</button>
 
-                <?php } else { ?>
-                        <a class='btn btn-warning btn-small' title='รออนุมัติ' rel='tooltip' id='prints'>
-                        <i class='icon-white icon-time'></i>รออนุมัติ...</a>
-                <?php
+                        <?php } else { ?>
+                            <a class='btn btn-warning btn-small' title='รออนุมัติ' rel='tooltip' id='prints'>
+                                <i class='icon-white icon-time'></i>รออนุมัติ...</a>
+                        <?php
                         }
                     }
 
@@ -165,16 +173,14 @@ table.dataTable thead td {
                     $renew_query = $_contextMitsu->query($renew_sql);
                     $renew_array = $renew_query->fetch(2);
                     if (!empty($renew_array)) {
-                ?>
+                        ?>
 
-                    <a class="btn btn-info " rel="tooltip"
-                    href='print/quotation_renew.php?id_data=<?php echo $row['id_data']; ?>&pages=<?php echo $renew_array['pages']; ?>'
-                    target='_blank' title="ดูใบเสนอราคา" rel="tooltip"><i class="icon-white icon-print"></i>
-                    ดูข้อมูลเสนอราคา</a>
-                <?php } ?>
-            </td>
-            <td>
-                <?php
+                        <a class="btn btn-info " rel="tooltip" href='print/quotation_renew.php?id_data=<?php echo $row['id_data']; ?>&pages=<?php echo $renew_array['pages']; ?>' target='_blank' title="ดูใบเสนอราคา" rel="tooltip"><i class="icon-white icon-print"></i>
+                            ดูข้อมูลเสนอราคา</a>
+                    <?php } ?>
+                </td>
+                <td>
+                    <?php
                     echo DateThai($row['send_date']);
                     // if (!empty($row_detailRenew)) {
                     // 	$edit_daterenew = explode(" ", $row_detailRenew['timecall']);
@@ -183,8 +189,8 @@ table.dataTable thead td {
                     // 	echo DateThai($row['send_date']);
                     // }
                     ?>
-            </td>
-            <!-- <td>
+                </td>
+                <!-- <td>
                 <?php
                 $query_saka = "SELECT saka FROM tb_customer WHERE  tb_customer.user='" . $row['login'] . "' ";
                 $objQuery_saka = $_contextMitsu->query($query_saka);
@@ -193,61 +199,61 @@ table.dataTable thead td {
                 <?php echo $row_desaka['saka']; ?>
             </td>
             <td><?php echo $row['login']; ?></td> -->
-            <td>
-                <?php echo $row['id_data']; ?></br><?php echo '<font color="#FF0000">' . $row['n_insure'] . '</font>'; ?>
-            </td>
-            <td>
-                <div align="left" style="text-indent: 10px;">
-                    <?php echo $row['title'] . " " . $row['cus_name'] . " " . $row['last'] ?></br>
-                    <?php if ($row['Cus_name'] != '') {
+                <td>
+                    <?php echo $row['id_data']; ?></br><?php echo '<font color="#FF0000">' . $row['n_insure'] . '</font>'; ?>
+                </td>
+                <td>
+                    <div align="left" style="text-indent: 10px;">
+                        <?php echo $row['title'] . " " . $row['cus_name'] . " " . $row['last'] ?></br>
+                        <?php if ($row['Cus_name'] != '') {
                             echo "( " . $row['Cus_title'] . $row['Cus_name'] . " " . $row['Cus_last'] . " )";
                         }
                         ?>
-                </div>
-            </td>
-            <td>
-                <?php
+                    </div>
+                </td>
+                <td>
+                    <?php
                     if ($row['EditTime'] == 'Y') {
                         echo DateThai($row['EditTime_StartDate']);
                     } else {
                         echo DateThai($row['start_date']);
                     }
                     ?>
-            </td>
-            <?php
+                </td>
+                <?php
                 $query_mocar = "SELECT `name` FROM tb_mo_car WHERE  tb_mo_car.id='" . $row['mo_car'] . "' ";
                 $objQuery_mocar = $_contextFour->query($query_mocar);
                 $row_democar = $objQuery_mocar->fetch(2);
                 ?>
-            <td><?php echo $row_democar['name']; ?></td>
-            <td><?php echo $row['car_body']; ?></br>
-                <?php if ($row['Edit_CarBody'] != '') {
+                <td><?php echo $row_democar['name']; ?></td>
+                <td><?php echo $row['car_body']; ?></br>
+                    <?php if ($row['Edit_CarBody'] != '') {
                         echo '<font color="#FF0000">' . $row['Edit_CarBody'] . '</font>';
                     }
                     ?>
-            </td>
-            <td><?php $cost_f = explode('|', $row_detailRenew_f);
+                </td>
+                <td><?php $cost_f = explode('|', $row_detailRenew_f);
                     echo $cost_f[0]; ?></td>
-            <td>
-                <?php echo $row['PactOnline'] != '' ? $row['PactOnline'] : $row['p_act']; ?></br>
-                <?php if ($row['EditAct_id'] != '') {
+                <td>
+                    <?php echo $row['PactOnline'] != '' ? $row['PactOnline'] : $row['p_act']; ?></br>
+                    <?php if ($row['EditAct_id'] != '') {
                         echo '<font color="#FF0000">' . $row['EditAct_id'] . '</font>';
                     } ?>
-            </td>
-            <td>
-                <div align="right"> <?php echo number_format($row_decost['net'], 2); ?> </div>
-            </td>
-            <td>
-                <div align="right">
-                    <?php if ($row['CostProduct'] != 0.00) {
+                </td>
+                <td>
+                    <div align="right"> <?php echo number_format($row_decost['net'], 2); ?> </div>
+                </td>
+                <td>
+                    <div align="right">
+                        <?php if ($row['CostProduct'] != 0.00) {
                             echo number_format($row['CostProduct'], 2);
                         } else {
                             echo number_format($row['add_price'], 2);
                         }
                         ?>
-                </div>
-            </td>
-        </tr>
+                    </div>
+                </td>
+            </tr>
         <?php }  ?>
     </tbody>
 </table>
@@ -258,36 +264,35 @@ table.dataTable thead td {
 <script type="text/javascript" src="data_table/js/jquery.dataTables.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#detail_table').DataTable({
-        "order": [
-            [4, "DESC"]
-        ],
-        "pageLength": _pageLength
+    $(document).ready(function() {
+        $('#detail_table').DataTable({
+            "order": [
+                [4, "DESC"]
+            ],
+            "pageLength": _pageLength
+        });
     });
-});
 
-document.querySelectorAll('select').forEach(function(el) {
-  el.addEventListener('change', function() {
-    let name = this.name;
-    if(name === 'detail_table_length'){
-        console.log('select',this.value);
-        search_car(this.value);
+    document.querySelectorAll('select').forEach(function(el) {
+        el.addEventListener('change', function() {
+            let name = this.name;
+            if (name === 'detail_table_length') {
+                console.log('select', this.value);
+                search_car(this.value);
+            }
+            console.log('select', name);
+        });
+    })
+
+    function funcrenew(a) {
+        $("#pload").html("<img src='img4/loadingIcon.gif'/ style='text-align:center;'>");
+        $("#pload").css('display', 'block');
+        $('#collapse4').css('display', 'none');
+
+        $('#content_pop').load('pages/renew_suzuki_select.php?id=' + a);
     }
-    console.log('select',name);
-  });
-})
 
-function funcrenew(a) {
-    $("#pload").html("<img src='img4/loadingIcon.gif'/ style='text-align:center;'>");
-    $("#pload").css('display', 'block');
-    $('#collapse4').css('display', 'none');
-
-    $('#content_pop').load('pages/renew_suzuki_select.php?id=' + a);
-}
-
-function renewInsureBtn()
-{
-    alert('ลูกค้าแจ้งงานต่ออายุแล้ว กรุณาตรวจสอบที่เมนู [ตรวจสอบ/แจ้งต่ออายุ]');
-}
+    function renewInsureBtn() {
+        alert('ลูกค้าแจ้งงานต่ออายุแล้ว กรุณาตรวจสอบที่เมนู [ตรวจสอบ/แจ้งต่ออายุ]');
+    }
 </script>
