@@ -42,6 +42,14 @@ class CheckRenewInformationService implements ICheckRenewInformationService
     private function fetchDataRenewCarInsuranceNew($modelRes)
     {
         try {
+            $log_type = $modelRes->LogType;
+            if ($log_type == 'TIP') {
+                $condition = "data.work_type = 'TIP' AND";
+            } elseif ($log_type == 'AIM') {
+                $condition = '';
+            } else {
+                $condition = "data.work_type IS NULL AND";
+            }
             $searchAll = $this->_convertSearch->searchAll($modelRes->DataRequest);
             $sqlOrderBy = $this->_convertSearch->sqlOrderBy($modelRes->DataRequest);
             $sqlLimit = $this->_convertSearch->sqlLimit($modelRes->DataRequest);
@@ -77,7 +85,7 @@ class CheckRenewInformationService implements ICheckRenewInformationService
             INNER JOIN insuree ON (detail_renew.id_data = insuree.id_data)
             INNER JOIN detail ON (detail_renew.id_data = detail.id_data)
             INNER JOIN req ON (detail_renew.id_data = req.id_data)
-            WHERE detail_renew.status = 'E' AND detail_renew.id_data_four != '' AND 
+            WHERE $condition detail_renew.status = 'E' AND detail_renew.id_data_four != '' AND 
             (
                 `data`.id_data LIKE '%$searchAll%' OR 
                 insuree.title LIKE '%$searchAll%' OR
@@ -89,7 +97,7 @@ class CheckRenewInformationService implements ICheckRenewInformationService
                 detail_renew.detailtext LIKE '%$searchAll%' OR
                 detail_renew.id_data_four LIKE '%$searchAll%'
             ) $sqlUserFollow $sqlOrderBy $sqlLimit ";
-            
+
             return $this->_contextMitsu->query($sqlRenew)->fetchAll(2);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -98,6 +106,14 @@ class CheckRenewInformationService implements ICheckRenewInformationService
 
     private function rowFullDataRenewCarInsuranceNew($modelRes)
     {
+        $log_type = $modelRes->LogType;
+        if ($log_type == 'TIP') {
+            $condition = "data.work_type = 'TIP' AND";
+        } elseif ($log_type == 'AIM') {
+            $condition = '';
+        } else {
+            $condition = "data.work_type IS NULL AND";
+        }
         try {
             $searchAll = $this->_convertSearch->searchAll($modelRes->DataRequest);
             $sqlUserFollow = $this->_convertSearch->sqlUserFollow($modelRes->UserLogin);
@@ -108,7 +124,7 @@ class CheckRenewInformationService implements ICheckRenewInformationService
             INNER JOIN insuree ON (detail_renew.id_data = insuree.id_data)
             INNER JOIN detail ON (detail_renew.id_data = detail.id_data)
             INNER JOIN req ON (detail_renew.id_data = req.id_data)
-            WHERE detail_renew.status = 'E' AND detail_renew.id_data_four != '' AND 
+            WHERE $condition detail_renew.status = 'E' AND detail_renew.id_data_four != '' AND 
             (
                 `data`.id_data LIKE '%$searchAll%' OR 
                 insuree.title LIKE '%$searchAll%' OR

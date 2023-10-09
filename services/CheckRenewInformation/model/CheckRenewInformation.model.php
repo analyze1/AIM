@@ -4,6 +4,7 @@ class CheckRenewInformationRequestModel
     public $DataRequest;
     public $UserLogin;
     public $UserRights;
+    public $LogType;
 }
 
 class DataRenewInsuranceModel
